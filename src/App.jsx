@@ -27,7 +27,8 @@ function App() {
   };
 
   const moveNoButton = () => {
-    const x = Math.random() * 200 - 100;
+    // Constrained movement for the 'No' button
+    const x = Math.random() * 200 - 100; 
     const y = Math.random() * 200 - 100;
     setNoBtnPosition({ x, y });
     setHoverCount(prev => prev + 1);
@@ -63,19 +64,25 @@ function App() {
 
   const getNoButtonText = () => {
     const phrases = [
-      "No",
-      "Are you sure?",
-      "Really?",
-      "Don't do this!",
-      "Click Yes!",
-      "Last chance!"
+      "No 🛑",
+      "Are you sure? 🤔",
+      "Really? 😬",
+      "Don't do this! 💔",
+      "Click Yes! 🙏",
+      "Last chance! ⏳",
+      "No 😐",
+      "Wait… what? 🤯",
+      "You sure about that? 👀",
+      "This feels illegal 😭",
+      "Wrong choice bestie 🙅‍♀️",
+      "Okay now you’re playing 🤡",
+      "Just click YES 😌💖"
     ];
     return phrases[Math.min(hoverCount, phrases.length - 1)];
   };
 
   return (
-    /* FULL VIEWPORT CENTERING */
-    <div className="relative min-h-screen w-screen overflow-hidden
+    <div className="relative h-screen w-screen overflow-hidden
                     bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500
                     flex items-center justify-center">
 
@@ -115,7 +122,7 @@ function App() {
               exit={{ scale: 0.8, opacity: 0 }}
               transition={{ type: "spring", stiffness: 100 }}
               className="bg-white/30 backdrop-blur-lg
-                         border border-white/20 rounded-3xl
+                         rounded-3xl
                          shadow-[0_8px_32px_0_rgba(31,38,135,0.37)]
                          p-8 md:p-12 text-center
                          w-[90%] max-w-lg mx-auto"
@@ -137,7 +144,7 @@ function App() {
                 I want to make it official!
               </p>
 
-              <div className="flex flex-col md:flex-row gap-6 justify-center items-center h-32">
+              <div className="flex flex-col md:flex-row gap-6 justify-center items-center h-32 relative w-full">
                 <motion.button
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}
@@ -145,8 +152,8 @@ function App() {
                   className="px-10 py-3 bg-gradient-to-r
                              from-green-400 to-emerald-600
                              text-white text-xl font-bold
-                             rounded-full shadow-lg
-                             border-4 border-white/30"
+                             rounded-full shadow-lg" 
+                             /* Removed border-4 border-white/30 */
                 >
                   YES! 😍
                 </motion.button>
@@ -158,8 +165,9 @@ function App() {
                   transition={{ type: "spring", stiffness: 300, damping: 20 }}
                   className="px-10 py-3 bg-white/20 text-white
                              text-xl font-bold rounded-full
-                             backdrop-blur-sm border-2 border-white/50
-                             hover:bg-rose-500 hover:border-rose-500"
+                             backdrop-blur-sm
+                             hover:bg-rose-500 hover:border-rose-500 absolute cursor-pointer" 
+                             /* Removed border-2 border-white/50 */
                 >
                   {getNoButtonText()}
                 </motion.button>
@@ -171,9 +179,10 @@ function App() {
               initial={{ scale: 0.5, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               className="bg-white/30 backdrop-blur-lg
-                         border border-white/20 rounded-3xl
+                         rounded-3xl
                          shadow-2xl p-8 md:p-12 text-center
                          w-[90%] max-w-lg mx-auto"
+                         /* Removed border border-white/20 */
             >
               <motion.div
                 className="text-8xl mb-6"
