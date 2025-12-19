@@ -8,6 +8,9 @@ function App() {
   const [noBtnPosition, setNoBtnPosition] = useState({ x: 0, y: 0 });
   const [hoverCount, setHoverCount] = useState(0);
 
+  // Define the maximum index for the phrases (length of 13, so index 12 is the last)
+  const MAX_HOVER_COUNT = 12;
+
   const blobVariants = {
     animate: {
       scale: [1, 1.2, 1],
@@ -27,11 +30,22 @@ function App() {
   };
 
   const moveNoButton = () => {
-    // Constrained movement for the 'No' button
+    // Constrained movement to keep the button within the central area
     const x = Math.random() * 200 - 100; 
     const y = Math.random() * 200 - 100;
     setNoBtnPosition({ x, y });
     setHoverCount(prev => prev + 1);
+  };
+
+  // Logic for the 'No' button click/touch
+  const handleNoClick = () => {
+    if (hoverCount >= MAX_HOVER_COUNT) {
+      // If the user persists until the final phrase, they are forced to 'Yes'
+      handleYes();
+    } else {
+      // Otherwise, the button just runs away and increments the count
+      moveNoButton();
+    }
   };
 
   const fireConfetti = () => {
@@ -82,6 +96,7 @@ function App() {
   };
 
   return (
+    /* FULL VIEWPORT CENTERING & BACKGROUND */
     <div className="relative h-screen w-screen overflow-hidden
                     bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500
                     flex items-center justify-center">
@@ -111,7 +126,7 @@ function App() {
                    filter blur-xl opacity-70"
       />
 
-      {/* CENTER LOCK */}
+      {/* CENTER LOCK - Card Container */}
       <div className="relative z-10 flex items-center justify-center w-full">
         <AnimatePresence mode="wait">
           {!answered ? (
@@ -153,7 +168,6 @@ function App() {
                              from-green-400 to-emerald-600
                              text-white text-xl font-bold
                              rounded-full shadow-lg" 
-                             /* Removed border-4 border-white/30 */
                 >
                   YES! 😍
                 </motion.button>
@@ -161,13 +175,14 @@ function App() {
                 <motion.button
                   animate={{ x: noBtnPosition.x, y: noBtnPosition.y }}
                   onHoverStart={moveNoButton}
-                  onClick={moveNoButton}
+                  onClick={handleNoClick}
+                  // FIX APPLIED: Added onTouchStart to trigger running logic immediately on mobile touch
+                  onTouchStart={handleNoClick} 
                   transition={{ type: "spring", stiffness: 300, damping: 20 }}
                   className="px-10 py-3 bg-white/20 text-white
                              text-xl font-bold rounded-full
                              backdrop-blur-sm
                              hover:bg-rose-500 hover:border-rose-500 absolute cursor-pointer" 
-                             /* Removed border-2 border-white/50 */
                 >
                   {getNoButtonText()}
                 </motion.button>
@@ -182,7 +197,6 @@ function App() {
                          rounded-3xl
                          shadow-2xl p-8 md:p-12 text-center
                          w-[90%] max-w-lg mx-auto"
-                         /* Removed border border-white/20 */
             >
               <motion.div
                 className="text-8xl mb-6"
