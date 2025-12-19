@@ -151,7 +151,7 @@ function App() {
               </motion.div>
 
               <h1 className="text-4xl md:text-5xl font-extrabold text-white mb-6 drop-shadow-md">
-                Will You Be My Girlfriend?
+                Will You Be My Lil Mama😉😘?
               </h1>
 
               <p className="text-lg md:text-xl text-white/90 mb-8 drop-shadow-sm">
