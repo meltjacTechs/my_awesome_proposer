@@ -149,34 +149,34 @@ function App() {
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.8, opacity: 0 }}
               className="bg-white/30 backdrop-blur-lg rounded-3xl
-                         shadow-2xl p-8 md:p-12 text-center
-                         w-[90%] max-w-lg"
+                         shadow-2xl p-10 md:p-16 lg:p-20 text-center
+                         w-[90%] max-w-2xl"
             >
               <motion.div
-                className="mb-6 text-7xl md:text-8xl"
+                className="mb-8 text-8xl md:text-9xl lg:text-[10rem]"
                 animate={{ scale: [1, 1.2, 1], rotate: [0, 10, -10, 0] }}
                 transition={{ duration: 2, repeat: Infinity }}
               >
                 💖
               </motion.div>
 
-              <h1 className="text-4xl md:text-5xl font-extrabold text-white mb-6">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white mb-8">
                 Will You Be My Lil Mama😉😘?
               </h1>
 
-              <p className="text-lg md:text-xl text-white/90 mb-8">
+              <p className="text-xl md:text-2xl lg:text-3xl text-white/90 mb-12 leading-relaxed">
                 Every moment with you is magic ✨ <br />
                 I want to make it official!
               </p>
 
-              <div className="relative h-32 flex justify-center items-center gap-6">
+              <div className="relative h-40 md:h-44 lg:h-48 flex justify-center items-center gap-8">
                 <motion.button
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}
                   onClick={handleYes}
-                  className="px-10 py-3 bg-gradient-to-r
+                  className="px-12 py-4 md:px-14 md:py-5 lg:px-16 lg:py-6 bg-gradient-to-r
                              from-green-400 to-emerald-600
-                             text-white text-xl font-bold rounded-full shadow-lg"
+                             text-white text-2xl md:text-3xl lg:text-4xl font-bold rounded-full shadow-lg"
                 >
                   YES 😍
                 </motion.button>
@@ -186,8 +186,8 @@ function App() {
                   onHoverStart={moveNoButton}
                   onClick={handleNoClick}
                   transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                  className="absolute px-10 py-3 bg-white/20
-                             text-white text-xl font-bold rounded-full
+                  className="absolute px-12 py-4 md:px-14 md:py-5 lg:px-16 lg:py-6 bg-white/20
+                             text-white text-2xl md:text-3xl lg:text-4xl font-bold rounded-full
                              backdrop-blur-sm cursor-pointer"
                 >
                   {getNoButtonText()}
@@ -200,35 +200,35 @@ function App() {
               initial={{ scale: 0.5, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               className="bg-white/30 backdrop-blur-lg rounded-3xl
-                         shadow-2xl p-8 md:p-12 text-center
-                         w-[90%] max-w-lg"
+                         shadow-2xl p-10 md:p-16 lg:p-20 text-center
+                         w-[90%] max-w-2xl"
             >
               <motion.div
-                className="text-8xl mb-6"
+                className="text-8xl md:text-9xl lg:text-[10rem] mb-8"
                 animate={{ y: [0, -20, 0] }}
                 transition={{ duration: 1, repeat: Infinity }}
               >
                 💑
               </motion.div>
 
-              <h2 className="text-5xl font-black text-white mb-6">
+              <h2 className="text-5xl md:text-6xl lg:text-7xl font-black text-white mb-8">
                 WOHOOO! 🎉
               </h2>
 
-              <p className="text-xl text-white/90 mb-8">
+              <p className="text-xl md:text-2xl lg:text-3xl text-white/90 mb-12 leading-relaxed">
                  Get ready for a lot of love, snacks, and annoying selfies! 📸
               </p>
 
               {countdown > 0 ? (
-                <div className="mb-6">
-                  <p className="text-white/80 text-lg mb-2">
+                <div className="mb-10">
+                  <p className="text-white/80 text-xl md:text-2xl lg:text-3xl mb-4">
                     Get ready to send your message in...
                   </p>
                   <motion.div
                     key={countdown}
                     initial={{ scale: 1.5, opacity: 0 }}
                     animate={{ scale: 1, opacity: 1 }}
-                    className="text-6xl font-black text-white"
+                    className="text-7xl md:text-8xl lg:text-9xl font-black text-white"
                   >
                     {countdown}
                   </motion.div>
@@ -240,8 +240,8 @@ function App() {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   onClick={openWhatsApp}
-                  className="mb-6 px-10 py-4 bg-gradient-to-r from-green-400 to-emerald-600
-                             text-white text-xl font-bold rounded-full shadow-lg
+                  className="mb-8 md:mb-10 px-12 py-5 md:px-14 md:py-6 lg:px-16 lg:py-7 bg-gradient-to-r from-green-400 to-emerald-600
+                             text-white text-2xl md:text-3xl lg:text-4xl font-bold rounded-full shadow-lg
                              hover:shadow-2xl transition-shadow"
                 >
                   📱 Send WhatsApp Message
@@ -255,8 +255,8 @@ function App() {
                   setNoBtnPosition({ x: 0, y: 0 });
                   setCountdown(5);
                 }}
-                className="px-8 py-3 bg-white/20 text-white rounded-full
-                           hover:bg-white/40 font-semibold"
+                className="px-10 py-4 md:px-12 md:py-5 lg:px-14 lg:py-6 bg-white/20 text-white rounded-full
+                           hover:bg-white/40 font-semibold text-lg md:text-xl lg:text-2xl transition-colors"
               >
                 ↺ Replay
               </button>
