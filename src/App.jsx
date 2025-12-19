@@ -77,8 +77,6 @@ function App() {
         setCountdown(countdown - 1);
       }, 1000);
       return () => clearTimeout(timer);
-    } else if (answered && countdown === 0) {
-      openWhatsApp();
     }
   }, [answered, countdown]);
 
@@ -224,7 +222,7 @@ function App() {
               {countdown > 0 ? (
                 <div className="mb-6">
                   <p className="text-white/80 text-lg mb-2">
-                    Opening WhatsApp in...
+                    Get ready to send your message in...
                   </p>
                   <motion.div
                     key={countdown}
@@ -236,9 +234,18 @@ function App() {
                   </motion.div>
                 </div>
               ) : (
-                <p className="text-white/80 text-lg mb-6">
-                  Opening WhatsApp now... 💬
-                </p>
+                <motion.button
+                  initial={{ scale: 0.8, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  onClick={openWhatsApp}
+                  className="mb-6 px-10 py-4 bg-gradient-to-r from-green-400 to-emerald-600
+                             text-white text-xl font-bold rounded-full shadow-lg
+                             hover:shadow-2xl transition-shadow"
+                >
+                  📱 Send WhatsApp Message
+                </motion.button>
               )}
 
               <button
