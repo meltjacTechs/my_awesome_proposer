@@ -90,7 +90,7 @@ function App() {
       "This feels illegal 😭",
       "Wrong choice bestie 🙅‍♀️",
       "Okay now you’re playing 🤡",
-      "Just click YES 😌💖"
+      "Just click YES 😩😭😭😭"
     ];
     return phrases[Math.min(hoverCount, phrases.length - 1)];
   };
